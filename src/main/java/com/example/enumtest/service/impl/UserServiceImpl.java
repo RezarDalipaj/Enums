@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class UserServiceImpl implements UserService {
@@ -52,12 +53,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public UserEntity findByIdEntity(Integer id){
+    public UserEntity findByIdEntity(Integer id) {
         Optional<UserEntity> userEntity = userRepository.findById(id);
         if (userEntity.isEmpty())
             throw new NullPointerException("User with id " + id);
         return userEntity.get();
     }
+
     @Override
     public User findById(Integer id) {
         UserEntity userEntity = findByIdEntity(id);
