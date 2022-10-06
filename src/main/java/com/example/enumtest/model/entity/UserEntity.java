@@ -2,6 +2,7 @@ package com.example.enumtest.model.entity;
 
 import com.example.enumtest.model.enums.Status;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.Where;
 
 import javax.persistence.*;
@@ -14,6 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Where(clause = "status=0")
+@SQLDelete(sql = "UPDATE user_entity SET status = 2 WHERE id=?")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
